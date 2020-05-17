@@ -15,7 +15,6 @@ const handleAmt = (req, res, postgres) => {
 
 const getAmt = (req, res, postgres) => {
   const { email, amount, category, date } = req.body;
-
   postgres
     .select("*")
     .from("expenses")

@@ -10,12 +10,23 @@ const handleAmt = (req, res, postgres) => {
       date: date,
     })
     .into("expenses")
-    .returning("email")
+    .catch((err) => res.status(400).json("not adddin db"));
+};
 
-    .then(res.json("added successfully"))
-    .catch((err) => res.status(400).json("not added to db"));
+const getAmt = (req, res, postgres) => {
+  const { email, amount, category, date } = req.body;
+
+  postgres
+    .select("*")
+    .from("expenses")
+    .where("email", "=", req.body.email)
+    .then((pay) => {
+      res.json(pay);
+    })
+    .catch((err) => res.status(400).json("cant retrive data"));
 };
 
 module.exports = {
   handleAmt: handleAmt,
+  getAmt: getAmt,
 };

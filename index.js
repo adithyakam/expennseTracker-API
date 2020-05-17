@@ -6,6 +6,7 @@ var knex = require("knex");
 const login = require("./Controller/Login");
 const register = require("./Controller/Register");
 const amount = require("./Controller/Amount");
+const overview = require("./Controller/Overview");
 
 const postgres = knex({
   client: "pg",
@@ -36,6 +37,11 @@ app.post("/Register", (req, res) => {
 
 app.post("/Amount", (req, res) => {
   amount.handleAmt(req, res, postgres);
+  amount.getAmt(req, res, postgres);
+});
+
+app.get("/overview", (req, res) => {
+  overview.handleChart(req, res, postgres);
 });
 
 app.listen(process.env.PORT || 3000, () => {

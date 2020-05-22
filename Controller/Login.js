@@ -30,6 +30,21 @@ const handleSignin = (req, res, postgres, bcrypt) => {
     .catch((err) => res.status(400).json("wromng credential"));
 };
 
+const getItems = (req, res, postgres) => {
+  const { email } = req.body;
+  console.log(email);
+
+  return postgres
+    .select("category")
+    .from("expenses")
+    .where("email", "=", email)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => res.status(400).json("unabale to get category"));
+};
+
 module.exports = {
   handleSignin: handleSignin,
+  getItems: getItems,
 };

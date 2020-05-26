@@ -12,7 +12,7 @@ const handleRegister = (req, res, postgres, bcrypt) => {
     })
     .into("login")
     .then(res.json("added successfully"))
-    .catch((err) => res.status(400).json("cant", err));
+    .catch((err) => res.status(400).json("not addded db"));
 };
 
 module.exports = {

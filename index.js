@@ -25,7 +25,7 @@ const postgres = knex({
 const app = express();
 
 app.use(bodyParse.json());
-// app.use(cors());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json("working");

@@ -12,6 +12,11 @@ const del = require("./Controller/Delete");
 const postgres = knex({
   client: "pg",
   connection: {
+    // host: "127.0.0.1",
+    // user: "postgres",
+    // password: "root",
+    // database: "e2",
+
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   },
@@ -20,7 +25,7 @@ const postgres = knex({
 const app = express();
 
 app.use(bodyParse.json());
-app.use(cors());
+// app.use(cors());
 
 app.get("/", (req, res) => {
   res.json("working");

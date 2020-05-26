@@ -11,7 +11,6 @@ const handleRegister = (req, res, postgres, bcrypt) => {
       email: email,
     })
     .into("login")
-    .returning("email")
     .then(res.json("added successfully"))
     .catch((err) => res.status(400).json("cant", err));
 };

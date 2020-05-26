@@ -1,5 +1,8 @@
 const handleRegister = (req, res, postgres, bcrypt) => {
   const { email, password } = req.body;
+
+  console.log(email, password);
+
   const hash = bcrypt.hashSync(password);
 
   postgres

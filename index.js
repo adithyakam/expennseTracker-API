@@ -8,6 +8,7 @@ const register = require("./Controller/Register");
 const amount = require("./Controller/Amount");
 const overview = require("./Controller/Overview");
 const del = require("./Controller/Delete");
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const postgres = knex({
   client: "pg",
